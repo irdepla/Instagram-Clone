@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { register } from "../../../service/auth.service";
 import { useMutation } from "@tanstack/react-query";
 import { ToastContainer, toast } from 'react-toastify';
@@ -25,7 +25,7 @@ const Register = () => {
     onSuccess: (data: any) => {
       dispatch(setUser(data))
         toast.success("Muvaffaqiyatli ro'yxatdan o'tdingiz")
-        navigate("/login")
+        navigate("/")
     },
     onError: (error: AxiosError) => {
         toast.error(((error?.response?.data) as unknown as {error: string}).error || "Xatolik yuz berdi")
@@ -44,7 +44,7 @@ const Register = () => {
     });
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent) {
     e.preventDefault();
     mutation.mutate(formData);
   }
@@ -55,7 +55,6 @@ const Register = () => {
       <div className="w-[350px] border m-auto mt-[60px]">
       <ToastContainer />
         <form
-          // @ts-ignore
           onSubmit={handleSubmit}
           action=""
         >

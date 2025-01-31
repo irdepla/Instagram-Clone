@@ -11,8 +11,8 @@ export const authSlice = createSlice({
             console.log("xotiraga saqlandi", action);
             localStorage.setItem("token", action.payload.accessToken || "")
             localStorage.setItem("user", JSON.stringify(action.payload.user) || "{}")
-            state.token = action.accessToken
-            state.user = action.user
+            state.token = action.payload.accessToken
+            state.user = action.payload.user
         }
     }
 })

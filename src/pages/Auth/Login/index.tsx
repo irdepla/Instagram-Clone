@@ -16,10 +16,14 @@ const Login = () => {
   const mutation = useMutation({
     mutationFn: login,
     onSuccess: (data: any) => {
-        const {token} = data
-        localStorage.setItem("token", token)
+        const {accessToken } = data?.data
+        if (!accessToken) {
+            toast.error("Access token not found in the response");
+            return;
+          }
+        localStorage.setItem("token", accessToken)
         toast.success("Login successful")
-        navigate("/home")
+        navigate("/")
     },
     onError: (error: AxiosError) => {
         toast.error(error?.message || "Xatolik yuz berdi. Qaytadan urinib ko'ring")
