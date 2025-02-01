@@ -15,21 +15,22 @@ const Home = () => {
             setPosts(posts)
         }
         fetchPosts()
-    })
+    }, [])
 
     return (
         <>
         <h1>Welcome to homePage</h1>
 
         {
-            posts?.map((post: PostInterface) => {
+            posts?.map((post: PostInterface) => (
                 <div className="flex flex-col" key={post.id}>
                     <img src={ SERVER_BASE_URL + post.mediaUrl} alt="" />
                     <p>{post.description}</p>
                 </div>
-            })
+            ))
         }
          </>      
     );
 }
 export default Home;
+

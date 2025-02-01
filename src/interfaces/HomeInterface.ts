@@ -4,3 +4,13 @@ export interface PostInterface {
     description: string,
     mediaUrl: string,
 }
+
+export interface User {
+    name: string,
+}
+
+export interface AuthResponse {
+    accessToken: string,
+    user: User
+}
+
