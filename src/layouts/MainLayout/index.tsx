@@ -1,7 +1,9 @@
 import { NavLink, Outlet } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 const MainLayout = () => {
     return (
         <>
+        <ToastContainer />
         <nav className='nav '>
             <div className="container flex flex-col border border-black border-solid ">
             <NavLink to="/" >
